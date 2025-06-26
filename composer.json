@@ -1,0 +1,8 @@
+{
+    "name": "rodavida/roda-da-vida",
+    "description": "Aplicação da Roda da Vida - Ferramenta de avaliação pessoal",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+} 
