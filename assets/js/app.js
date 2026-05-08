@@ -1,660 +1,449 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     let areas = [
-        {
-            id: "health_and_fitness",
-            title: "Saúde",
-            value: 0,
-            color: "#4bdbff"
-        },
-        {
-            id: "career",
-            title: "Carreira",
-            value: 0,
-            color: "#4877e0"
-        },
-        {
-            id: "love",
-            title: "Amor",
-            value: 0,
-            color: "#b71f58"
-        },
-        {
-            id: "spirituality",
-            title: "Espiritualidade",
-            value: 0,
-            color: "#9a2ecc"
-        },
-        {
-            id: "family",
-            title: "Família",
-            value: 0,
-            color: "#ff9bf2"
-        },
-        {
-            id: "money",
-            title: "Finanças",
-            value: 0,
-            color: "#6ad007"
-        },
-        {
-            id: "fun",
-            title: "Diversão",
-            value: 0,
-            color: "#f5bf40"
-        },
-        {
-            id: "friends",
-            title: "Amigos",
-            value: 0,
-            color: "#ef7625"
-        }       
+        { id: "health_and_fitness", title: "Saúde", value: 0, color: "#2f9c88" },
+        { id: "career", title: "Carreira", value: 0, color: "#2f6f9f" },
+        { id: "love", title: "Amor", value: 0, color: "#b8586b" },
+        { id: "spirituality", title: "Espiritualidade", value: 0, color: "#7d5aa8" },
+        { id: "family", title: "Família", value: 0, color: "#c8943b" },
+        { id: "money", title: "Finanças", value: 0, color: "#1f6b54" },
+        { id: "fun", title: "Diversão", value: 0, color: "#d77c3f" },
+        { id: "friends", title: "Amigos", value: 0, color: "#5f8c65" }
     ];
 
-    // Descrições para cada valor de cada área da vida
     const areaDescriptions = {
         health_and_fitness: {
-            1: "Saúde em estado crítico - Precisa de atenção médica imediata",
-            2: "Saúde muito ruim - Necessita de mudanças drásticas no estilo de vida",
-            3: "Saúde ruim - Precisa melhorar hábitos alimentares e exercícios",
-            4: "Saúde abaixo da média - Alguns problemas de saúde presentes",
-            5: "Saúde regular - Nem boa nem ruim, há espaço para melhorias",
-            6: "Saúde boa - Está no caminho certo, mas pode melhorar",
-            7: "Saúde muito boa - Hábitos saudáveis bem estabelecidos",
-            8: "Saúde excelente - Pratica exercícios regularmente e se alimenta bem",
-            9: "Saúde excepcional - Estilo de vida muito saudável e equilibrado",
-            10: "Saúde perfeita - Condição física e mental ideal"
+            0: "Área não avaliada nesta rodada.",
+            1: "Sua saúde pede atenção imediata e cuidado profissional.",
+            2: "Há sinais importantes de desgaste físico ou emocional.",
+            3: "Rotina, descanso e alimentação precisam ganhar prioridade.",
+            4: "Existe algum cuidado, mas ainda falta consistência.",
+            5: "Sua saúde está funcional, com espaço claro para evolução.",
+            6: "Você já tem uma base positiva e pode refinar hábitos.",
+            7: "Há bons hábitos estabelecidos e margem para excelência.",
+            8: "Sua saúde está forte e bem sustentada no cotidiano.",
+            9: "Você demonstra alto equilíbrio físico e mental.",
+            10: "Sua saúde aparece como uma área de grande plenitude."
         },
         career: {
-            1: "Carreira em crise - Desempregado ou em situação muito difícil",
-            2: "Carreira muito ruim - Trabalho insatisfatório e sem perspectivas",
-            3: "Carreira ruim - Trabalho que não gosta, mas precisa manter",
-            4: "Carreira abaixo da média - Trabalho básico, sem crescimento",
-            5: "Carreira regular - Trabalho estável, mas sem grandes realizações",
-            6: "Carreira boa - Trabalho satisfatório com algumas oportunidades",
-            7: "Carreira muito boa - Trabalho gratificante com crescimento",
-            8: "Carreira excelente - Posição de destaque e reconhecimento",
-            9: "Carreira excepcional - Liderança e sucesso profissional",
-            10: "Carreira perfeita - Realização profissional completa"
+            0: "Área não avaliada nesta rodada.",
+            1: "A carreira está em um ponto crítico e precisa de direção.",
+            2: "O trabalho atual parece gerar mais peso do que crescimento.",
+            3: "Há insatisfação relevante com rotina, papel ou perspectivas.",
+            4: "A carreira funciona, mas ainda sem avanço consistente.",
+            5: "Existe estabilidade, embora falte realização mais profunda.",
+            6: "Você percebe oportunidades e algum senso de progresso.",
+            7: "A carreira está saudável, com crescimento e reconhecimento.",
+            8: "Você vive uma fase profissional forte e estimulante.",
+            9: "Sua trajetória mostra liderança, clareza e impacto.",
+            10: "A carreira aparece alinhada com propósito e realização."
         },
         love: {
-            1: "Vida amorosa em crise - Relacionamento tóxico ou solidão extrema",
-            2: "Vida amorosa muito ruim - Relacionamento problemático",
-            3: "Vida amorosa ruim - Relacionamento instável ou insatisfatório",
-            4: "Vida amorosa abaixo da média - Relacionamento básico",
-            5: "Vida amorosa regular - Relacionamento estável, mas sem paixão",
-            6: "Vida amorosa boa - Relacionamento satisfatório e harmonioso",
-            7: "Vida amorosa muito boa - Relacionamento feliz e equilibrado",
-            8: "Vida amorosa excelente - Amor profundo e companheirismo",
-            9: "Vida amorosa excepcional - Relacionamento muito especial",
-            10: "Vida amorosa perfeita - Amor verdadeiro e plenitude"
+            0: "Área não avaliada nesta rodada.",
+            1: "A vida amorosa está exigindo cuidado e limites claros.",
+            2: "Há dores ou conflitos que precisam ser encarados.",
+            3: "O campo afetivo parece instável ou pouco nutritivo.",
+            4: "Existe vínculo, mas ainda com pouca leveza ou presença.",
+            5: "A vida amorosa está estável, mas pode ganhar profundidade.",
+            6: "Há afeto e abertura para mais conexão.",
+            7: "O relacionamento ou a vida afetiva estão bem encaminhados.",
+            8: "Existe parceria, admiração e troca consistente.",
+            9: "A vida amorosa está muito viva e significativa.",
+            10: "Você percebe plenitude, reciprocidade e amor maduro."
         },
         spirituality: {
-            1: "Espiritualidade ausente - Sem conexão com o sagrado",
-            2: "Espiritualidade muito baixa - Pouca reflexão sobre o sentido da vida",
-            3: "Espiritualidade baixa - Alguma busca por significado",
-            4: "Espiritualidade abaixo da média - Reflexões ocasionais",
-            5: "Espiritualidade regular - Busca moderada por crescimento espiritual",
-            6: "Espiritualidade boa - Práticas espirituais regulares",
-            7: "Espiritualidade muito boa - Conexão profunda com o sagrado",
-            8: "Espiritualidade excelente - Desenvolvimento espiritual avançado",
-            9: "Espiritualidade excepcional - Iluminação e sabedoria espiritual",
-            10: "Espiritualidade perfeita - Plenitude espiritual completa"
+            0: "Área não avaliada nesta rodada.",
+            1: "Falta conexão com sentido, silêncio ou transcendência.",
+            2: "Há pouca escuta interior no ritmo atual.",
+            3: "Você começa a buscar significado, mas ainda sem rotina.",
+            4: "Existem reflexões ocasionais, com pouca prática.",
+            5: "A espiritualidade está presente de forma moderada.",
+            6: "Há práticas ou valores que sustentam seu centro.",
+            7: "Você cultiva sentido, presença e conexão interior.",
+            8: "A espiritualidade orienta escolhas de modo consistente.",
+            9: "Há profundidade, sabedoria e serenidade nessa área.",
+            10: "Você vive forte alinhamento espiritual e existencial."
         },
         family: {
-            1: "Família em crise - Relacionamentos familiares muito problemáticos",
-            2: "Família muito ruim - Conflitos familiares constantes",
-            3: "Família ruim - Relacionamentos familiares instáveis",
-            4: "Família abaixo da média - Relacionamentos familiares básicos",
-            5: "Família regular - Relacionamentos familiares estáveis",
-            6: "Família boa - Relacionamentos familiares harmoniosos",
-            7: "Família muito boa - Família unida e amorosa",
-            8: "Família excelente - Relacionamentos familiares muito fortes",
-            9: "Família excepcional - Família muito especial e unida",
-            10: "Família perfeita - Harmonia familiar completa"
+            0: "Área não avaliada nesta rodada.",
+            1: "As relações familiares pedem proteção e reparos urgentes.",
+            2: "Conflitos ou afastamentos estão pesando bastante.",
+            3: "Há instabilidade e pouco espaço de escuta.",
+            4: "A convivência existe, mas ainda carece de qualidade.",
+            5: "A família está estável, com vínculos a fortalecer.",
+            6: "Há harmonia suficiente para construir mais proximidade.",
+            7: "Os laços familiares estão saudáveis e presentes.",
+            8: "Existe apoio, carinho e convivência significativa.",
+            9: "A família aparece como fonte profunda de força.",
+            10: "Você percebe harmonia e pertencimento familiar plenos."
         },
         money: {
-            1: "Finanças em crise - Dívidas e problemas financeiros graves",
-            2: "Finanças muito ruins - Situação financeira muito difícil",
-            3: "Finanças ruins - Dificuldades financeiras constantes",
-            4: "Finanças abaixo da média - Renda básica, sem sobras",
-            5: "Finanças regulares - Renda suficiente para necessidades básicas",
-            6: "Finanças boas - Renda confortável com algumas economias",
-            7: "Finanças muito boas - Renda alta e boa gestão financeira",
-            8: "Finanças excelentes - Renda muito alta e investimentos",
-            9: "Finanças excepcionais - Independência financeira quase completa",
-            10: "Finanças perfeitas - Independência financeira total"
+            0: "Área não avaliada nesta rodada.",
+            1: "As finanças exigem atenção urgente e plano de contenção.",
+            2: "A pressão financeira está afetando sua tranquilidade.",
+            3: "Há dificuldades recorrentes de organização ou renda.",
+            4: "A renda cobre parte do necessário, mas sem folga.",
+            5: "As finanças estão funcionais, com ajustes importantes.",
+            6: "Existe controle inicial e possibilidade de reserva.",
+            7: "A gestão financeira está consistente e mais segura.",
+            8: "Você tem boa estrutura, planejamento e visão de futuro.",
+            9: "As finanças sustentam liberdade e boas escolhas.",
+            10: "Você vive excelente autonomia e clareza financeira."
         },
         fun: {
-            1: "Diversão ausente - Sem momentos de lazer ou prazer",
-            2: "Diversão muito baixa - Poucos momentos de lazer",
-            3: "Diversão baixa - Lazer ocasional e básico",
-            4: "Diversão abaixo da média - Algumas atividades de lazer",
-            5: "Diversão regular - Lazer equilibrado com responsabilidades",
-            6: "Diversão boa - Atividades de lazer satisfatórias",
-            7: "Diversão muito boa - Vida social ativa e hobbies interessantes",
-            8: "Diversão excelente - Muitas atividades prazerosas e viagens",
-            9: "Diversão excepcional - Vida muito divertida e emocionante",
-            10: "Diversão perfeita - Equilíbrio perfeito entre trabalho e lazer"
+            0: "Área não avaliada nesta rodada.",
+            1: "O prazer e o lazer quase não têm espaço na rotina.",
+            2: "Há pouco descanso real e pouca leveza.",
+            3: "Momentos prazerosos existem, mas são raros.",
+            4: "O lazer aparece de forma tímida ou irregular.",
+            5: "Existe algum equilíbrio entre dever e prazer.",
+            6: "Você já reserva espaço para se renovar.",
+            7: "A diversão está presente e ajuda seu bem-estar.",
+            8: "Você vive experiências prazerosas com frequência.",
+            9: "A vida tem leveza, variedade e entusiasmo.",
+            10: "Você integra prazer, descanso e vitalidade com maestria."
         },
         friends: {
-            1: "Amizades ausentes - Isolamento social completo",
-            2: "Amizades muito ruins - Poucos amigos e relacionamentos superficiais",
-            3: "Amizades ruins - Amizades instáveis ou tóxicas",
-            4: "Amizades abaixo da média - Alguns amigos, mas relacionamentos básicos",
-            5: "Amizades regulares - Círculo de amigos estável",
-            6: "Amizades boas - Amizades verdadeiras e confiáveis",
-            7: "Amizades muito boas - Círculo social ativo e gratificante",
-            8: "Amizades excelentes - Amizades profundas e duradouras",
-            9: "Amizades excepcionais - Amizades muito especiais e significativas",
-            10: "Amizades perfeitas - Relacionamentos de amizade ideais"
+            0: "Área não avaliada nesta rodada.",
+            1: "A rede de apoio social está muito frágil.",
+            2: "Há isolamento ou vínculos pouco confiáveis.",
+            3: "As amizades parecem distantes ou instáveis.",
+            4: "Existe contato, mas falta profundidade.",
+            5: "O círculo social está estável, com espaço para presença.",
+            6: "Há boas amizades e oportunidades de mais convivência.",
+            7: "Você tem vínculos saudáveis e trocas importantes.",
+            8: "As amizades são presentes, nutritivas e confiáveis.",
+            9: "Sua rede social é forte e cheia de significado.",
+            10: "Você vive amizades profundas, leves e recíprocas."
         }
     };
 
+    const improvementTips = {
+        health_and_fitness: [
+            "Agende um check-up e transforme cuidado em rotina.",
+            "Defina uma meta simples de sono, água e movimento.",
+            "Escolha uma atividade física sustentável para sua semana."
+        ],
+        career: [
+            "Liste três competências que podem abrir novas oportunidades.",
+            "Converse com alguém da área que você admira.",
+            "Defina uma meta profissional mensurável para os próximos 30 dias."
+        ],
+        love: [
+            "Crie uma conversa honesta sobre necessidades e limites.",
+            "Reserve tempo de qualidade sem distrações.",
+            "Observe padrões afetivos que você deseja repetir ou encerrar."
+        ],
+        spirituality: [
+            "Separe dez minutos diários para silêncio, oração ou meditação.",
+            "Registre gratidões e aprendizados no fim do dia.",
+            "Procure práticas que conectem sentido, corpo e presença."
+        ],
+        family: [
+            "Convide alguém da família para uma conversa sem pressa.",
+            "Reconheça algo positivo antes de abordar um conflito.",
+            "Crie um pequeno ritual de presença semanal."
+        ],
+        money: [
+            "Mapeie entradas, gastos fixos e gastos invisíveis.",
+            "Defina uma reserva mínima e automatize parte dela.",
+            "Escolha uma dívida ou desperdício para reduzir primeiro."
+        ],
+        fun: [
+            "Bloqueie um horário real de lazer na agenda.",
+            "Retome um hobby pequeno antes de buscar grandes planos.",
+            "Inclua descanso como compromisso, não como sobra."
+        ],
+        friends: [
+            "Envie uma mensagem para alguém importante hoje.",
+            "Marque um encontro simples, sem esperar a ocasião perfeita.",
+            "Participe de um grupo ou atividade com interesses em comum."
+        ]
+    };
+
     let currentAreaIndex = 0;
-    const isReportPage = window.location.pathname.includes('relatorio.php');
+    const isReportPage = window.location.pathname.includes("relatorio.php");
 
-    let ctx, h2Title, pQuestion, ratingList, formIdInput, formHealthAndFitnessInput, skipButtonForm, evaluationSection;
-    let reportSection, finalWheelCanvas, reportDateElement, printButton, savePdfButton, shareEmailButton;
-
-    if (!isReportPage) {
-        ctx = document.getElementById('preview_canvas').getContext('2d');
-        h2Title = document.querySelector('.rate h2');
-        pQuestion = document.querySelector('.rate p');
-        ratingList = document.querySelector('.rate .rating');
-        formIdInput = document.querySelector('form.edit_wheel input#id');
-        formHealthAndFitnessInput = document.querySelector('form.edit_wheel input[name="wheel[health_and_fitness]"]');
-        skipButtonForm = document.getElementById('edit_wheel_skip');
-        evaluationSection = document.querySelector('.main-content');
-
-        // Event listeners for rating selection
-        ratingList.addEventListener('change', function(event) {
-            const targetRadio = event.target;
-            if (targetRadio.type === 'radio' && targetRadio.name.startsWith('wheel[')) {
-                const areaId = targetRadio.name.substring(6, targetRadio.name.length - 1);
-                const newValue = parseInt(targetRadio.value);
-
-                const areaIndex = areas.findIndex(area => area.id === areaId);
-                if (areaIndex !== -1) {
-                    areas[areaIndex].value = newValue;
-                    updateChartData(); // Atualiza o gráfico
-
-                    // Atualiza o estilo dos botões de avaliação
-                    document.querySelectorAll('.rate-bg').forEach(bg => {
-                        bg.style.transform = 'scale(1)';
-                        bg.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                    });
-                    if (targetRadio.nextElementSibling) {
-                        targetRadio.nextElementSibling.style.transform = 'scale(1.1)';
-                        targetRadio.nextElementSibling.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+    const chartOptions = {
+        scales: {
+            r: {
+                suggestedMin: 0,
+                suggestedMax: 10,
+                ticks: {
+                    stepSize: 1,
+                    color: "rgba(23, 32, 28, 0.55)",
+                    backdropColor: "rgba(255, 253, 248, 0.75)"
+                },
+                grid: { color: "rgba(23, 32, 28, 0.12)" },
+                angleLines: { color: "rgba(23, 32, 28, 0.13)" },
+                pointLabels: {
+                    color: "#17201c",
+                    font: { size: 13, weight: "700" }
+                }
+            }
+        },
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return `${context.label}: ${context.raw}/10`;
                     }
                 }
             }
-        });
+        },
+        animation: {
+            duration: 700,
+            easing: "easeOutQuart"
+        },
+        responsive: true,
+        maintainAspectRatio: false
+    };
 
-        renderCurrentArea(); // Chamada inicial para renderizar a primeira área e o gráfico
+    function chartData(label) {
+        return {
+            labels: areas.map((area) => area.title),
+            datasets: [{
+                label,
+                data: areas.map((area) => area.value),
+                backgroundColor: "rgba(31, 107, 84, 0.18)",
+                borderColor: "#1f6b54",
+                borderWidth: 3,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                pointBackgroundColor: areas.map((area) => area.color),
+                pointBorderColor: "#fff",
+                pointBorderWidth: 2
+            }]
+        };
     }
 
-    reportSection = document.getElementById('report-section');
-    finalWheelCanvas = document.getElementById('final_wheel_canvas');
-    reportDateElement = document.getElementById('report-date');
-    printButton = document.getElementById('print-button');
-    savePdfButton = document.getElementById('save-pdf-button');
-    shareEmailButton = document.getElementById('share-email-button');
-
-    let chart;
-    if (!isReportPage) {
-        chart = new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: areas.map(item => item.title),
-                datasets: [{
-                    label: 'Roda da Vida',
-                    data: areas.map(item => item.value),
-                    backgroundColor: areas.map(item => item.color + '80'),
-                    borderColor: areas.map(item => item.color),
-                    borderWidth: 2,
-                    pointBackgroundColor: areas.map(item => item.color),
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: areas.map(item => item.color)
-                }]
-            },
-            options: {
-                scales: {
-                    r: {
-                        angleLines: {
-                            display: true,
-                            color: 'rgba(0,0,0,0.1)'
-                        },
-                        suggestedMin: 0,
-                        suggestedMax: 10,
-                        ticks: {
-                            stepSize: 1,
-                            backdropColor: 'rgba(255,255,255,0.75)'
-                        },
-                        grid: {
-                            color: 'rgba(0,0,0,0.1)'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: ${context.raw}/10`;
-                            }
-                        }
-                    }
-                },
-                animation: {
-                    duration: 1000,
-                    easing: 'easeInOutQuart'
-                },
-                responsive: true,
-                maintainAspectRatio: false
-            }
+    function resetRatingVisuals() {
+        document.querySelectorAll(".rate-bg").forEach((bg) => {
+            bg.classList.remove("is-selected");
+            bg.style.removeProperty("transform");
+            bg.style.removeProperty("box-shadow");
         });
-        chart.update();
-        console.log('Chart initialized:', chart);
     }
-
 
     function renderCurrentArea() {
-        if (currentAreaIndex < areas.length) {
-            const currentArea = areas[currentAreaIndex];
-            h2Title.textContent = currentArea.title;
-            pQuestion.textContent = `Como você avalia esta área da sua vida?`;
-            formIdInput.value = currentArea.id; // Update hidden ID for the form
+        const title = document.querySelector(".rate h2");
+        const question = document.querySelector(".rate .lead");
+        const formIdInputs = document.querySelectorAll("form.edit_wheel input#id");
+        const progressPill = document.getElementById("progress-pill");
 
-            document.querySelectorAll('.rating input[type="radio"]').forEach(radio => {
-                radio.name = `wheel[${currentArea.id}]`;
-                radio.checked = (parseInt(radio.value) === currentArea.value);
-            });
-            
-            document.querySelectorAll('.rate-bg').forEach(bg => {
-                bg.style.transform = 'scale(1)';
-                bg.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-            });
-            const checkedRadio = document.querySelector(`input[name="wheel[${currentArea.id}]"]:checked`);
-            if (checkedRadio && checkedRadio.nextElementSibling) {
-                checkedRadio.nextElementSibling.style.transform = 'scale(1.1)';
-                checkedRadio.nextElementSibling.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-            }
-
-        } else {
-            // All areas evaluated - save data and redirect to report view
-            localStorage.setItem('rodaDaVidaData', JSON.stringify(areas));
-            window.location.href = 'relatorio.php';
-        }
-    }
-
-    function updateChartData() {
-        chart.data.datasets[0].data = areas.map(item => item.value);
-        chart.update();
-    }
-
-    function renderReport() {
-        const finalCtx = finalWheelCanvas.getContext('2d');
-        new Chart(finalCtx, {
-            type: 'radar',
-            data: {
-                labels: areas.map(item => item.title),
-                datasets: [{
-                    label: 'Minha Roda da Vida',
-                    data: areas.map(item => item.value),
-                    backgroundColor: areas.map(item => item.color + '80'),
-                    borderColor: areas.map(item => item.color),
-                    borderWidth: 2,
-                    pointBackgroundColor: areas.map(item => item.color),
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: areas.map(item => item.color)
-                }]
-            },
-            options: {
-                scales: {
-                    r: {
-                        angleLines: {
-                            display: true,
-                            color: 'rgba(0,0,0,0.1)'
-                        },
-                        suggestedMin: 0,
-                        suggestedMax: 10,
-                        ticks: {
-                            stepSize: 1,
-                            backdropColor: 'rgba(255,255,255,0.75)'
-                        },
-                        grid: {
-                            color: 'rgba(0,0,0,0.1)'
-                        },
-                        pointLabels: {
-                            font: {
-                                size: 14
-                            },
-                            color: 'rgba(0,0,0,0.8)',
-                            callback: function(label, index) {
-                                return `${label} ${areas[index].value}`;
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: ${context.raw}/10`;
-                            }
-                        }
-                    }
-                },
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-
-        const today = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        reportDateElement.textContent = today.toLocaleDateString('pt-BR', options);
-
-        // Adicionar seção de descrições das áreas
-        createAreaDescriptions();
-
-        printButton.addEventListener('click', function() {
-            window.print();
-        });
-
-        savePdfButton.addEventListener('click', function() {
-            html2canvas(finalWheelCanvas).then(function(canvas) {
-                const imgData = canvas.toDataURL('image/png');
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'px',
-                    format: 'a4'
-                });
-
-                const imgWidth = 595;
-                const pageHeight = 842;
-                const imgHeight = canvas.height * imgWidth / canvas.width;
-                let heightLeft = imgHeight;
-                let position = 0;
-
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
-                }
-
-                pdf.save('minha-roda-da-vida.pdf');
-            }).catch(error => {
-                console.error('Erro ao gerar PDF:', error);
-                alert('Ocorreu um erro ao gerar o PDF. Por favor, tente novamente.'); // Mantendo o alerta de erro genérico
-            });
-        });
-
-        shareEmailButton.addEventListener('click', function() {
-            // O modal já é aberto automaticamente pelo data-bs-toggle
-            // A funcionalidade será implementada no botão "Enviar Email" do modal
-        });
-
-        // Adicionar funcionalidade ao botão de enviar email
-        const sendEmailBtn = document.getElementById('sendEmailBtn');
-        if (sendEmailBtn) {
-            sendEmailBtn.addEventListener('click', function() {
-                sendEmail();
-            });
-        }
-    }
-
-    function createAreaDescriptions() {
-        // Criar container para as descrições
-        const descriptionsContainer = document.createElement('div');
-        descriptionsContainer.className = 'area-descriptions mt-5';
-        
-        // Identificar áreas que precisam de melhoria (pontuação <= 5)
-        const areasToImprove = areas.filter(area => area.value <= 5);
-        
-        descriptionsContainer.innerHTML = `
-            <br><br><br><br><br><h3 class="mb-4 text-center">Análise Detalhada das Áreas da Vida</h3>
-            <div class="row">
-                <div class="col-12">
-                    <div class="descriptions-list">
-                        ${areas.map(area => {
-                            const value = area.value;
-                            const description = areaDescriptions[area.id][value] || 'Avaliação não fornecida';
-                            const colorClass = value <= 3 ? 'text-danger' : value <= 5 ? 'text-warning' : value <= 7 ? 'text-info' : 'text-success';
-                            
-                            return `
-                                <div class="area-item mb-3 p-3 border rounded">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <h5 class="mb-0" style="color: ${area.color}">
-                                            <i class="fas fa-circle me-2"></i>${area.title}
-                                        </h5>
-                                        <span class="badge ${colorClass} fs-6">${value}/10</span>
-                                    </div>
-                                    <p class="mb-0 text-muted">${description}</p>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </div>
-            </div>
-            ${areasToImprove.length > 0 ? createImprovementTips(areasToImprove) : ''}
-        `;
-
-        // Inserir após a roda da vida
-        const wheelContainer = document.querySelector('.wheel-preview-final');
-        wheelContainer.parentNode.insertBefore(descriptionsContainer, wheelContainer.nextSibling);
-    }
-
-    function createImprovementTips(areasToImprove) {
-        const improvementTips = {
-            health_and_fitness: [
-                "Estabeleça uma rotina de exercícios de 30 minutos por dia",
-                "Mantenha uma alimentação equilibrada e hidratação adequada",
-                "Priorize 7-8 horas de sono por noite",
-                "Faça check-ups médicos regulares",
-                "Reduza o consumo de alimentos processados"
-            ],
-            career: [
-                "Identifique suas habilidades e interesses profissionais",
-                "Busque oportunidades de desenvolvimento e capacitação",
-                "Networking: conecte-se com profissionais da área",
-                "Defina metas claras de carreira a curto e longo prazo",
-                "Considere mudanças se o trabalho atual não for satisfatório"
-            ],
-            love: [
-                "Invista tempo na comunicação com seu parceiro",
-                "Pratique a empatia e compreensão mútua",
-                "Planeje momentos especiais juntos",
-                "Se solteiro, participe de atividades sociais",
-                "Trabalhe na autoestima e autoconhecimento"
-            ],
-            spirituality: [
-                "Reserve tempo para meditação ou oração diária",
-                "Leia livros sobre desenvolvimento pessoal",
-                "Conecte-se com a natureza regularmente",
-                "Pratique gratidão e mindfulness",
-                "Explore diferentes práticas espirituais"
-            ],
-            family: [
-                "Dedique tempo de qualidade com a família",
-                "Mantenha comunicação aberta e honesta",
-                "Resolva conflitos de forma construtiva",
-                "Crie tradições e momentos especiais",
-                "Demonstre afeto e apreciação regularmente"
-            ],
-            money: [
-                "Crie um orçamento mensal e controle gastos",
-                "Estabeleça uma reserva de emergência",
-                "Aprenda sobre investimentos e educação financeira",
-                "Reduza dívidas e evite gastos desnecessários",
-                "Busque formas de aumentar sua renda"
-            ],
-            fun: [
-                "Reserve tempo semanal para hobbies e lazer",
-                "Experimente novas atividades e experiências",
-                "Mantenha contato com amigos e família",
-                "Viaje e explore novos lugares",
-                "Equilibre trabalho e diversão"
-            ],
-            friends: [
-                "Inicie conversas e mantenha contato regular",
-                "Participe de grupos com interesses similares",
-                "Seja um bom ouvinte e amigo",
-                "Organize encontros e atividades sociais",
-                "Mantenha amizades antigas e faça novas"
-            ]
-        };
-
-        return `
-            <div class="improvement-tips mt-5">
-                <h4 class="text-center mb-4" style="color: var(--primary-color);">
-                    <i class="fas fa-lightbulb me-2"></i>Dicas para Melhorar suas Áreas de Destaque
-                </h4>
-                <div class="row">
-                    ${areasToImprove.map(area => {
-                        const tips = improvementTips[area.id];
-                        return `
-                            <div class="col-md-6 mb-4">
-                                <div class="tip-card p-3 border rounded" style="border-left: 4px solid ${area.color} !important;">
-                                    <h5 style="color: ${area.color};">
-                                        <i class="fas fa-arrow-up me-2"></i>${area.title}
-                                    </h5>
-                                    <ul class="tip-list mt-3 mb-0">
-                                        ${tips.slice(0, 3).map(tip => `
-                                            <li class="mb-2">
-                                                <i class="fas fa-check-circle me-2" style="color: ${area.color};"></i>
-                                                ${tip}
-                                            </li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    function sendEmail() {
-        const email = document.getElementById('emailAddress').value;
-        const name = document.getElementById('emailName').value || 'Usuário';
-        
-        if (!email) {
-            alert('Por favor, insira um endereço de email válido.');
+        if (currentAreaIndex >= areas.length) {
+            localStorage.setItem("rodaDaVidaData", JSON.stringify(areas));
+            window.location.href = "relatorio.php";
             return;
         }
 
-        // Mostrar loading no botão
-        const sendBtn = document.getElementById('sendEmailBtn');
-        const originalText = sendBtn.innerHTML;
-        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
-        sendBtn.disabled = true;
+        const currentArea = areas[currentAreaIndex];
+        title.textContent = currentArea.title;
+        question.textContent = "Dê uma nota de 1 a 10 para esta área da sua vida. A próxima área aparece automaticamente.";
+        progressPill.textContent = `${currentAreaIndex + 1} de ${areas.length}`;
 
-        // Preparar dados para envio
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('name', name);
-        formData.append('wheel_data', JSON.stringify(areas));
-
-        // Enviar requisição
-        fetch('send_email.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Restaurar botão
-            sendBtn.innerHTML = originalText;
-            sendBtn.disabled = false;
-
-            if (data.success) {
-                // Fechar modal de email
-                const emailModal = bootstrap.Modal.getInstance(document.getElementById('emailModal'));
-                emailModal.hide();
-                
-                // Mostrar modal de sucesso
-                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                successModal.show();
-                
-                // Limpar formulário
-                document.getElementById('emailForm').reset();
-            } else {
-                // Mostrar modal de erro
-                document.getElementById('errorMessage').textContent = data.message;
-                const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-                errorModal.show();
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            
-            // Restaurar botão
-            sendBtn.innerHTML = originalText;
-            sendBtn.disabled = false;
-            
-            // Mostrar modal de erro
-            document.getElementById('errorMessage').textContent = 'Erro de conexão. Tente novamente.';
-            const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-            errorModal.show();
+        formIdInputs.forEach((input) => {
+            input.value = currentArea.id;
         });
+
+        document.querySelectorAll(".rating input[type='radio']").forEach((radio) => {
+            radio.name = `wheel[${currentArea.id}]`;
+            radio.checked = parseInt(radio.value, 10) === currentArea.value;
+        });
+
+        resetRatingVisuals();
+        const checkedRadio = document.querySelector(`input[name="wheel[${currentArea.id}]"]:checked`);
+        if (checkedRadio && checkedRadio.nextElementSibling) {
+            checkedRadio.nextElementSibling.classList.add("is-selected");
+        }
+    }
+
+    function scoreClass(value) {
+        if (value <= 3) return "score-low";
+        if (value <= 5) return "score-mid";
+        if (value <= 7) return "score-good";
+        return "score-great";
+    }
+
+    function createAreaDescriptions() {
+        const descriptionsContainer = document.createElement("div");
+        descriptionsContainer.className = "area-descriptions";
+
+        descriptionsContainer.innerHTML = `
+            <h3 class="section-title">Análise detalhada</h3>
+            <div class="descriptions-list">
+                ${areas.map((area) => {
+                    const value = Number(area.value) || 0;
+                    const description = areaDescriptions[area.id][value] || "Avaliação não fornecida.";
+
+                    return `
+                        <article class="area-item" style="border-left: 4px solid ${area.color};">
+                            <div class="area-item-header">
+                                <h5 style="color: ${area.color};">${area.title}</h5>
+                                <span class="score-badge ${scoreClass(value)}">${value}/10</span>
+                            </div>
+                            <p>${description}</p>
+                        </article>
+                    `;
+                }).join("")}
+            </div>
+        `;
+
+        const wheelContainer = document.querySelector(".wheel-preview-final");
+        wheelContainer.parentNode.insertBefore(descriptionsContainer, wheelContainer.nextSibling);
+    }
+
+    function createImprovementTips() {
+        const areasToImprove = areas
+            .filter((area) => Number(area.value) > 0 && Number(area.value) <= 5)
+            .sort((a, b) => a.value - b.value)
+            .slice(0, 4);
+
+        if (!areasToImprove.length) return;
+
+        const tipsContainer = document.createElement("div");
+        tipsContainer.className = "improvement-tips";
+        tipsContainer.innerHTML = `
+            <h3 class="section-title">Próximos passos</h3>
+            <div class="tips-grid">
+                ${areasToImprove.map((area) => `
+                    <article class="tip-card" style="border-left: 4px solid ${area.color};">
+                        <h5 style="color: ${area.color};">${area.title}</h5>
+                        <ul class="tip-list">
+                            ${improvementTips[area.id].map((tip) => `<li>${tip}</li>`).join("")}
+                        </ul>
+                    </article>
+                `).join("")}
+            </div>
+        `;
+
+        const descriptionsContainer = document.querySelector(".area-descriptions");
+        descriptionsContainer.parentNode.insertBefore(tipsContainer, descriptionsContainer.nextSibling);
+    }
+
+    function renderReport() {
+        const finalWheelCanvas = document.getElementById("final_wheel_canvas");
+        const reportDateElement = document.getElementById("report-date");
+        const printButton = document.getElementById("print-button");
+        const savePdfButton = document.getElementById("save-pdf-button");
+
+        new Chart(finalWheelCanvas.getContext("2d"), {
+            type: "radar",
+            data: chartData("Minha Roda da Vida"),
+            options: chartOptions
+        });
+
+        const today = new Date();
+        reportDateElement.textContent = `Gerado em ${today.toLocaleDateString("pt-BR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        })}`;
+
+        createAreaDescriptions();
+        createImprovementTips();
+
+        if (printButton) {
+            printButton.addEventListener("click", function () {
+                window.print();
+            });
+        }
+
+        if (savePdfButton) {
+            savePdfButton.addEventListener("click", function () {
+                const reportSection = document.getElementById("report-section");
+                html2canvas(reportSection, { scale: 2, backgroundColor: "#ffffff" })
+                    .then(function (canvas) {
+                        const imgData = canvas.toDataURL("image/png");
+                        const { jsPDF } = window.jspdf;
+                        const pdf = new jsPDF({
+                            orientation: "portrait",
+                            unit: "px",
+                            format: "a4"
+                        });
+
+                        const pageWidth = pdf.internal.pageSize.getWidth();
+                        const pageHeight = pdf.internal.pageSize.getHeight();
+                        const imgHeight = (canvas.height * pageWidth) / canvas.width;
+                        let heightLeft = imgHeight;
+                        let position = 0;
+
+                        pdf.addImage(imgData, "PNG", 0, position, pageWidth, imgHeight);
+                        heightLeft -= pageHeight;
+
+                        while (heightLeft > 0) {
+                            position -= pageHeight;
+                            pdf.addPage();
+                            pdf.addImage(imgData, "PNG", 0, position, pageWidth, imgHeight);
+                            heightLeft -= pageHeight;
+                        }
+
+                        pdf.save("minha-roda-da-vida.pdf");
+                    })
+                    .catch(function () {
+                        alert("Não foi possível gerar o PDF agora. Tente novamente.");
+                    });
+            });
+        }
     }
 
     if (!isReportPage) {
-        document.querySelectorAll('.rating input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const value = parseInt(this.value);
-                areas[currentAreaIndex].value = value;
-                updateChartData();
-                
-                document.querySelectorAll('.rate-bg').forEach(bg => {
-                    bg.style.transform = 'scale(1)';
-                    bg.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                });
-                
-                this.nextElementSibling.style.transform = 'scale(1.1)';
-                this.nextElementSibling.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-                
-                setTimeout(() => {
-                    currentAreaIndex++;
-                    renderCurrentArea();
-                }, 1200);
-            });
+        const previewCanvas = document.getElementById("preview_canvas");
+        const ratingList = document.querySelector(".rate .rating");
+        const skipButtonForm = document.getElementById("edit_wheel_skip");
+
+        const chart = new Chart(previewCanvas.getContext("2d"), {
+            type: "radar",
+            data: chartData("Roda da Vida"),
+            options: chartOptions
         });
 
-        skipButtonForm.addEventListener('submit', function(event) {
+        function updateChartData() {
+            chart.data.datasets[0].data = areas.map((area) => area.value);
+            chart.update();
+        }
+
+        ratingList.addEventListener("change", function (event) {
+            const targetRadio = event.target;
+            if (targetRadio.type !== "radio") return;
+
+            const value = parseInt(targetRadio.value, 10);
+            areas[currentAreaIndex].value = value;
+            resetRatingVisuals();
+
+            if (targetRadio.nextElementSibling) {
+                targetRadio.nextElementSibling.classList.add("is-selected");
+            }
+
+            updateChartData();
+
+            window.setTimeout(function () {
+                currentAreaIndex++;
+                renderCurrentArea();
+            }, 520);
+        });
+
+        skipButtonForm.addEventListener("submit", function (event) {
             event.preventDefault();
             areas[currentAreaIndex].value = 0;
             updateChartData();
-            
-            setTimeout(() => {
+
+            window.setTimeout(function () {
                 currentAreaIndex++;
                 renderCurrentArea();
-            }, 1200);
+            }, 260);
         });
 
         renderCurrentArea();
     } else {
-        const storedData = localStorage.getItem('rodaDaVidaData');
-        if (storedData) {
-            areas = JSON.parse(storedData);
-            renderReport();
-            localStorage.removeItem('rodaDaVidaData'); // Clean up storage
-        } else {
-            console.warn('Nenhum dado da Roda da Vida encontrado. Redirecionando para a página inicial.');
-            window.location.href = 'index.php'; // Redirect if no data
+        const storedData = localStorage.getItem("rodaDaVidaData");
+        if (!storedData) {
+            window.location.href = "index.php";
+            return;
         }
+
+        areas = JSON.parse(storedData);
+        renderReport();
+        localStorage.removeItem("rodaDaVidaData");
     }
-}); 
+});

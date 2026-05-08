@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='pt-BR'>
+<html lang="pt-BR">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -9,119 +9,107 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PG2SLJX');</script>
 <!-- End Google Tag Manager -->
 
-<meta charset='utf-8'>
-<meta content='width=device-width, initial-scale=1' name='viewport'>
-<meta content="A Roda da Vida é uma ferramenta poderosa para visualizar todas as áreas da sua vida e identificar onde você precisa melhorar. É rápido, simples e totalmente gratuito!" name='description'>
-<meta content='Roda da Vida' property='og:site_name'>
-
-<meta content='summary' name='twitter:card'>
-<meta content='Roda da Vida | Avaliação Gratuita Online' name='twitter:title'>
-<meta content="A Roda da Vida é uma ferramenta poderosa para visualizar todas as áreas da sua vida e identificar onde você precisa melhorar. É rápido, simples e totalmente gratuito!" name='twitter:description'>
-<meta content='noindex' name='robots'>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="A Roda da Vida é uma ferramenta visual para avaliar áreas essenciais da vida e encontrar prioridades com clareza." name="description">
+<meta content="Roda da Vida" property="og:site_name">
+<meta content="summary" name="twitter:card">
+<meta content="Roda da Vida | Avaliação Gratuita Online" name="twitter:title">
+<meta content="Avalie sua vida com uma ferramenta simples, visual e gratuita." name="twitter:description">
+<meta content="noindex" name="robots">
 
 <title>Roda da Vida | Avaliação Gratuita Online</title>
-<link href="assets/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
-<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link href="assets/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<meta content="authenticity_token" name="csrf-param" />
-<meta content="hHvnGLn397zlCpU8fWJyUI+ZTkqilOvxD+aIMkavvVg=" name="csrf-token" />
+<meta content="authenticity_token" name="csrf-param">
+<meta content="hHvnGLn397zlCpU8fWJyUI+ZTkqilOvxD+aIMkavvVg=" name="csrf-token">
 </head>
 <body>
 
-<div id='wrap'>
-<div class='container main-content'>
-    <div class='row'>
-        <div class='col-md-12 rate'>
-            <h2 class="mb-4">Saúde</h2>
-            <p class="lead">Como você avalia esta área da sua vida?</p>
-            <form accept-charset="UTF-8" action="/wheel" class="edit_wheel" id="edit_wheel_862860" method="post">
-                <div style="display:none">
-                    <input name="utf8" type="hidden" value="✓" />
-                    <input name="_method" type="hidden" value="patch" />
-                    <input name="authenticity_token" type="hidden" value="hHvnGLn397zlCpU8fWJyUI+ZTkqilOvxD+aIMkavvVg=" />
-                </div>
-                <input id="token" name="token" type="hidden" value="p5XyBSre2gXrqg_NgcOqTg" />
-                <input id="id" name="id" type="hidden" value="career" />
-                
-                <ul class='rating'>
-                    <li class='hidden'>
-                        <input checked='checked' name='wheel[health_and_fitness]' type='radio' value='0'>
-                        <span class='hidden'></span>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='1'>
-                        <div class='rate-bg'><span>1</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='2'>
-                        <div class='rate-bg'><span>2</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='3'>
-                        <div class='rate-bg'><span>3</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='4'>
-                        <div class='rate-bg'><span>4</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='5'>
-                        <div class='rate-bg'><span>5</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='6'>
-                        <div class='rate-bg'><span>6</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='7'>
-                        <div class='rate-bg'><span>7</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='8'>
-                        <div class='rate-bg'><span>8</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='9'>
-                        <div class='rate-bg'><span>9</span></div>
-                    </li>
-                    <li>
-                        <input name='wheel[health_and_fitness]' type='radio' value='10'>
-                        <div class='rate-bg'><span>10</span></div>
-                    </li>  
-                </ul>
-            </form>
+<main class="page-shell">
+    <header class="topbar">
+        <a class="brand-mark" href="index.php" aria-label="Roda da Vida">
+            <img src="assets/img/logo.webp" alt="">
+            <span>Roda da Vida</span>
+        </a>
+        <p class="topbar-note">Avaliação gratuita, visual e confidencial.</p>
+    </header>
 
-            <form accept-charset="UTF-8" action="/wheel" class="edit_wheel mt-12" id="edit_wheel_skip" method="post">
-                <div style="display:none">
-                    <input name="utf8" type="hidden" value="✓" />
-                    <input name="_method" type="hidden" value="patch" />
-                    <input name="authenticity_token" type="hidden" value="hHvnGLn397zlCpU8fWJyUI+ZTkqilOvxD+aIMkavvVg=" />
-                </div>
-                <input id="token" name="token" type="hidden" value="p5XyBSre2gXrqg_NgcOqTg" />
-                <input id="id" name="id" type="hidden" value="career" />
-                <button class="btn-skip" type="submit">
-                    Pular esta área - não é importante para mim
-                </button>
-            </form>
-        </div>
-        
-    </div>
-</div>
-</div>
+    <section class="hero-grid" aria-label="Avaliação da Roda da Vida">
+        <div class="container main-content">
+            <div class="row">
+                <div class="col-12 rate">
+                    <span class="eyebrow">Diagnóstico pessoal</span>
+                    <h2 class="mb-4">Saúde</h2>
+                    <p class="lead">Dê uma nota de 1 a 10 para esta área da sua vida. A próxima área aparece automaticamente.</p>
+                    <form accept-charset="UTF-8" action="/wheel" class="edit_wheel" id="edit_wheel_862860" method="post">
+                        <div style="display:none">
+                            <input name="utf8" type="hidden" value="✓">
+                            <input name="_method" type="hidden" value="patch">
+                            <input name="authenticity_token" type="hidden" value="hHvnGLn397zlCpU8fWJyUI+ZTkqilOvxD+aIMkavvVg=">
+                        </div>
+                        <input id="token" name="token" type="hidden" value="p5XyBSre2gXrqg_NgcOqTg">
+                        <input id="id" name="id" type="hidden" value="health_and_fitness">
 
-<div class='container my-5'>
-    <div class='row justify-content-center'>
-        <div class='col-md-8 text-center'>            
-            <div class='wheel-preview'>
-                <canvas id='preview_canvas'></canvas>
+                        <ul class="rating" aria-label="Escolha uma nota de 1 a 10">
+                            <li class="hidden">
+                                <input checked="checked" name="wheel[health_and_fitness]" type="radio" value="0">
+                                <span class="hidden"></span>
+                            </li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="1"><div class="rate-bg"><span>1</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="2"><div class="rate-bg"><span>2</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="3"><div class="rate-bg"><span>3</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="4"><div class="rate-bg"><span>4</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="5"><div class="rate-bg"><span>5</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="6"><div class="rate-bg"><span>6</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="7"><div class="rate-bg"><span>7</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="8"><div class="rate-bg"><span>8</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="9"><div class="rate-bg"><span>9</span></div></li>
+                            <li><input name="wheel[health_and_fitness]" type="radio" value="10"><div class="rate-bg"><span>10</span></div></li>
+                        </ul>
+                    </form>
+
+                    <form accept-charset="UTF-8" action="/wheel" class="edit_wheel mt-4" id="edit_wheel_skip" method="post">
+                        <div style="display:none">
+                            <input name="utf8" type="hidden" value="✓">
+                            <input name="_method" type="hidden" value="patch">
+                            <input name="authenticity_token" type="hidden" value="hHvnGLn397zlCpU8fWJyUI+ZTkqilOvxD+aIMkavvVg=">
+                        </div>
+                        <input id="token" name="token" type="hidden" value="p5XyBSre2gXrqg_NgcOqTg">
+                        <input id="id" name="id" type="hidden" value="health_and_fitness">
+                        <button class="btn-skip" type="submit">Pular esta área</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class='footer-push'></div>
+        <aside class="wheel-panel" aria-label="Prévia da roda">
+            <div class="wheel-panel-header">
+                <div>
+                    <p class="wheel-panel-title">Sua roda em tempo real</p>
+                    <p class="wheel-panel-copy">A visualização evolui conforme você responde.</p>
+                </div>
+                <span class="progress-pill" id="progress-pill">1 de 8</span>
+            </div>
+            <div class="wheel-preview">
+                <canvas id="preview_canvas"></canvas>
+            </div>
+            <div class="microcopy" aria-label="Escala de avaliação">
+                <span>1-3 atenção</span>
+                <span>4-7 desenvolvimento</span>
+                <span>8-10 força</span>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<div class="footer-push"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
